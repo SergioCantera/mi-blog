@@ -1,0 +1,20 @@
+---
+import '@/styles/global.css';
+interface Props {
+    title: string
+}
+const {title} = Astro.props;
+---
+<head>
+    <!-- Global Metadata -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="favicon.ico" type="image/x-icon" />
+    <!-- Font Preloads -->
+    <link rel="preload" href="/fonts/Montserrat-Bold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-Light.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-Medium.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/Montserrat-Regular.ttf" as="font" type="font/ttf" crossorigin />
+    
+    <title>{title}</title>
+</head>
