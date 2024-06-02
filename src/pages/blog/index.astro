@@ -2,19 +2,18 @@
 import {getCollection} from 'astro:content';
 import MainLayout from '@/layouts/MainLayout.astro';
 import Article from '@/components/Article.astro';
-import type { ActionError } from 'astro:actions';
 const posts = (await (getCollection("blog"))).sort((a,b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 <MainLayout title="Blog">
     <div class="max-w-content-size mx-auto w-full">
-        <section class="mt-6 w-full">
-          <ul class="space-y-8">
+        <div class="mt-6 w-full prose prose-invert">
+          <ul class="space-y-8 list-none">
             {
               posts.map(post => (
                 <Article {...post.data} slug={post.slug}/>
               ))
             }
           </ul>
-        </section>
+        </div>
       </div>
 </MainLayout>
