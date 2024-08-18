@@ -2,20 +2,36 @@
 import BaseHead from "@/components/BaseHead.astro";
 import NavMenu from "@/components/NavMenu.astro";
 interface Props {
-    title: string
+  title: string;
 }
-const {title} = Astro.props;
+const { title } = Astro.props;
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="es">
-    <BaseHead title={title}/>
-    <body class="bg-dark-blue max-w-content-size mx-auto w-full">
-        <div>
-            <NavMenu />
-            <main>
-                <slot />
-            </main>
-            <footer></footer>
-        </div>
-    </body>
+  <BaseHead title={title} />
+  <body class="bg-white w-full">
+    <div class="relative w-full">
+      <NavMenu />
+      <main class="py-[70px]">
+        <slot />
+      </main>
+      <footer></footer>
+    </div>
+  </body>
 </html>
+<style is:global>
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+</style>

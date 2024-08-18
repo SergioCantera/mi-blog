@@ -1,13 +1,100 @@
 ---
-import Image from "astro/components/Image.astro"
+
 ---
-<div class="max-w-xl">
-    <ul class="flex list-none text-white justify-between">
-        <a href="/"><img src="/free-logo.png" width="48" height="48" /></a>
-        <div class="flex list-none gap-4 px-4 py-2">
-            <a href="/"><li>Inicio</li></a>
-            <a href="/about"><li>Sobre mi</li></a>
-            <a href="/blog"><li>Blog</li></a>
-        </div>
+
+<header class="w-full fixed top-0 left-0 shadow-nav-menu bg-white">
+  <nav
+    class="flex text-black relative justify-between h-[70px] max-w-[980px] ml-auto mr-auto"
+  >
+    <a href="/" class="flex self-center gap-3">
+      <img src="/free-logo.png" width="50" height="50" />
+      <div class="font-medium my-auto text-black">Power Siero</div>
+    </a>
+    <button
+      id="open-btn"
+      class="block border-none bg-none cursor-pointer md:hidden md:pointer-events-none"
+      aria-label="Abrir Menu"
+    >
+      <img
+        class="p-2 text-white"
+        src="/hamburger-menu-icon.svg"
+        width="50"
+        height="50"
+        alt="abrir menu"
+      />
+    </button>
+    <ul
+      id="menu"
+      class="flex list-none m-0 p-0 flex-col fixed top-0 left-0 opacity-0 md:opacity-100 md:pointer-events-auto my-3 w-full h-full overflow-y-auto items-center bg-dark-blue md:bg-transparent md:static md:self-center md:flex-row"
+    >
+      <button
+        id="close-btn"
+        class="block border-none bg-none cursor-pointer pointer-events-auto md:hidden md:pointer-events-none self-end text-white"
+        aria-label="Cerrar Menu"
+      >
+        <img
+          class="p-2"
+          src="/close-icon.svg"
+          width="50"
+          height="50"
+          alt="cerrar menu"
+        />
+      </button>
+      <li class="relative p-0 md:px-[15px]">
+        <a
+          class="selected text-white leading-loose md:leading-normal md:text-black font-medium size-5 uppercase"
+          href="/">Inicio</a>
+      </li>
+      <li class="relative p-0 md:px-[15px]">
+        <a
+          class="selected text-white leading-loose md:leading-normal md:text-black font-medium size-5 uppercase"
+          href="/about">Sobre mi</a>
+      </li>
+      <li class="relative p-0 md:px-[15px]">
+        <a
+          class="selected text-white leading-loose md:leading-normal md:text-black font-medium size-5 uppercase"
+          href="/blog">Blog</a>
+      </li>
     </ul>
-</div>
+  </nav>
+</header>
+<style>
+  li > a.selected::after {
+    content: "";
+    background-color: darkblue;
+    height: 4px;
+    width: 100%;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+  }
+
+  li > a:hover {
+    color: darkblue;
+  }
+
+  .menu {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .menu_opened {
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.3s;
+  }
+</style>
+<script>
+  const menu = document.getElementById("menu");
+  const openBtn = document.getElementById("open-btn");
+  const closeBtn = document.getElementById("close-btn");
+
+  openBtn?.addEventListener("click", function () {
+    menu?.classList.add("opacity-100");
+    menu?.classList.toggle("opacity-0");
+  });
+  closeBtn?.addEventListener("click", function () {
+    menu?.classList.remove("opacity-100");
+    menu?.classList.toggle("opacity-0");
+  });
+</script>

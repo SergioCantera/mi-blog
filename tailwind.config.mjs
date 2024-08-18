@@ -7,10 +7,13 @@ export default {
 				'dark-blue': '#10151D',
 				'soft-white': 'rgb(191 199 210/1)',
 				'extra-soft-white': 'rgb(46 60 81 / 1)',
-				'soft-light': 'rgb(22 30 41 / 1)',
+				'soft-light': 'rgb(22 30 41 / 1)'
 			  },
 			fontFamily: {
 				sans: ['Montserrat', 'ui-sans-seriff', 'system-ui']
+			},
+			boxShadow: {
+				'nav-menu': '0 4px 5px #e5e5e5'
 			}
 		},
 		maxWidth: {
